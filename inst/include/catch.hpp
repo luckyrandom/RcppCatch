@@ -8936,7 +8936,11 @@ int main (int argc, char * const argv[]) {
 #define REQUIRE_THAT( arg, matcher ) INTERNAL_CHECK_THAT( arg, matcher, Catch::ResultDisposition::Normal, "REQUIRE_THAT" )
 
 #define INFO( msg ) INTERNAL_CATCH_INFO( msg, "INFO" )
+#ifdef CATCH_NO_RENAME_WARN_TO_CWARN
 #define WARN( msg ) INTERNAL_CATCH_MSG( Catch::ResultWas::Warning, Catch::ResultDisposition::ContinueOnFailure, "WARN", msg )
+#else
+#define CWARN( msg ) INTERNAL_CATCH_MSG( Catch::ResultWas::Warning, Catch::ResultDisposition::ContinueOnFailure, "WARN", msg )
+#endif
 #define SCOPED_INFO( msg ) INTERNAL_CATCH_INFO( msg, "INFO" )
 #define CAPTURE( msg ) INTERNAL_CATCH_INFO( #msg " := " << msg, "CAPTURE" )
 #define SCOPED_CAPTURE( msg ) INTERNAL_CATCH_INFO( #msg " := " << msg, "CAPTURE" )
