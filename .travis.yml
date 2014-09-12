@@ -1,0 +1,22 @@
+language: c
+
+env:
+  global:
+    # GITHUB_TOKEN
+    - secure: "fFDmx6aSpapfRppLPwEyrARUE+Ir2xrvsvczvL2DQ1Kd5dd4VYGx2gqMbhOB1CBFmHFMQI6U+61tFiZT5CDW8tBIVeVLwXOebfT5QycJ3X7vj/gKlt0jSIvsV6mjm9/DDVj9d7E6V0AUICZMWFF/bFOCsGD5H26QwBzfQLxlZEw="
+
+before_install:
+  - curl -OL http://raw.github.com/luckyrandom/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+install:
+  - ./travis-tool.sh install_deps
+script: ./travis-tool.sh run_tests
+
+after_failure:
+  - ./travis-tool.sh dump_logs
+
+after_success:
+  - curl -OL http://raw.github.com/luckyrandom/r-travis/master/scripts/github-release.rb
+  - chmod 755 ./github-release.rb
+  - ./travis-tool.sh deploy ./RCatch*.tar.gz
