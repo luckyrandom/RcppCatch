@@ -1,0 +1,15 @@
+Package: RCatch
+Type: Package
+Title: Catch header files
+Version: 0.1.0.53-0
+Date: 2014-09-12
+Author: Chenliang Xu;
+ the authors of Catch for the included version of Catch
+Maintainer: Chenliang Xu <lucky.random@gmail.com>
+License: BSL-1.0
+Description: Catch stands for C++ Automated Test Cases in Headers and
+             is a multi-paradigm automated test framework for C++ and
+             Objective-C (and, maybe, C).
+Depends: R (>= 3.0)
+
+
