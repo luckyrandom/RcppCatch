@@ -1,4 +1,4 @@
-Package: RCatch
+Package: RcppCatch
 Type: Package
 Title: Catch header files
 Version: 0.1.0.53-0
